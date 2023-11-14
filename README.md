@@ -37,3 +37,7 @@ Funcionaría de forma similar al @Timed de Spring, pero imprimiendo la duración
 - El uso de TDD. En caso de subir la práctica a un repositorio, se pueden utilizar los commits
 para ver el proceso.
 - Aplicación de los principios SOLID.
+
+
+    Notas: 
+    OpenAPI located in http://localhost:8080/swagger-ui/index.html
