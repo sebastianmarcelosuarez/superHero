@@ -3,13 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.tomate.boot</groupId>
-    <artifactId>jpa-blog</artifactId>
+    <groupId>com.tomate.org</groupId>
+    <artifactId>demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-
-    <name>klagan-superheroe</name>
-    <description>klagan-superheroe with h2</description>
+    <name>klagansuperheroe</name>
+    <description>klagansuperheroe with h2</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -61,7 +60,15 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
-
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
