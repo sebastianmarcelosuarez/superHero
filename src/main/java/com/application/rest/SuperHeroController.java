@@ -1,5 +1,6 @@
 package com.application.rest;
 
+import com.application.aop.MyTimeLogger;
 import com.application.model.SuperHero;
 import com.application.model.dto.SuperHeroDto;
 import com.application.service.SuperHeroService;
@@ -22,28 +23,17 @@ public class SuperHeroController {
 
 	@GetMapping(value = "/")
 	@ResponseStatus(HttpStatus.OK)
+	@MyTimeLogger
 	public ResponseEntity getSuperHeroes() {
-		Optional<List<SuperHero>> priceOptional = superHeroService.getAllSuperHeroes();
+		Optional<List<SuperHero>> allSuperHeroesOptional = superHeroService.getAllSuperHeroes();
+		if (allSuperHeroesOptional.isEmpty() ) return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 
-
-		//Consume external API:
-			//final String uri = "http://localhost:8080/springrestexample/employees.xml";
-		//    final String uri = "https://catfact.ninja/fact";
-
-		//	RestTemplate restTemplate = new RestTemplate();
-		//	String result = restTemplate.getForObject(uri, String.class);
-
-		//	System.out.println(result);
-
-			//Consume external API: END
-
-		if (priceOptional.isEmpty() ) return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-
-		return ResponseEntity.status(HttpStatus.OK).body(priceOptional);
+		return ResponseEntity.status(HttpStatus.OK).body(allSuperHeroesOptional);
 	}
 
 	@GetMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.OK)
+	@MyTimeLogger
 	public ResponseEntity getSuperHeroById(@PathVariable(value = "id") Long superHeroId) {
 		Optional<SuperHero> superHero = superHeroService.getSuperHeroById(superHeroId);
 
@@ -54,6 +44,7 @@ public class SuperHeroController {
 
 	@GetMapping(value = "/data")
 	@ResponseStatus(HttpStatus.OK)
+	@MyTimeLogger
 	public ResponseEntity getSuperHeroesByName(@RequestParam String name) {
 		Optional<List<SuperHero>> superHero = superHeroService.getSuperHeroBySuperName(name);
 
@@ -64,6 +55,7 @@ public class SuperHeroController {
 
 	@PostMapping("/")
 	@ResponseStatus(HttpStatus.CREATED)
+	@MyTimeLogger
 	public ResponseEntity createSuperHero(@RequestBody SuperHeroDto superHeroDto) {
 		Optional<SuperHero> superHero = superHeroService.saveSuperHero(superHeroDto);
 
@@ -74,6 +66,7 @@ public class SuperHeroController {
 
 	@PutMapping("/")
 	@ResponseStatus(HttpStatus.OK)
+	@MyTimeLogger
 	public ResponseEntity updateSuperHero(@RequestBody SuperHero superHero) {
 		Optional<SuperHero> superHeroUpdated = superHeroService.updateSuperHero(superHero);
 
@@ -84,6 +77,7 @@ public class SuperHeroController {
 
 	@DeleteMapping(value = "/{id}")
 	@ResponseStatus(HttpStatus.OK)
+	@MyTimeLogger
 	public ResponseEntity deleteSuperHeroById(@PathVariable(value = "id") Long superHeroId) {
 		superHeroService.deleteSuperHero(superHeroId);
 		return ResponseEntity.status(HttpStatus.OK).build();

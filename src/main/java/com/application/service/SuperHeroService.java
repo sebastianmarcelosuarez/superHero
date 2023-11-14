@@ -1,5 +1,6 @@
 package com.application.service;
 
+import com.application.aop.MyTimeLogger;
 import com.application.model.SuperHero;
 import com.application.model.dto.SuperHeroDto;
 import com.application.repository.SuperHeroRepository;
@@ -66,7 +67,7 @@ public class SuperHeroService {
 		superHeroRepository.deleteById(id);
 
 	}
-
+	@MyTimeLogger
 	public void initialize() {
 
 		List superHeroList = new ArrayList<SuperHero>();
