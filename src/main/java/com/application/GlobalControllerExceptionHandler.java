@@ -15,4 +15,9 @@ class GlobalControllerExceptionHandler {
 		System.out.println(ex.getMessage());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
 	}
+	@ExceptionHandler(Exception.class)
+	public ResponseEntity genericException(Exception ex) {
+		System.out.println(ex.getMessage());
+		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+	}
 }

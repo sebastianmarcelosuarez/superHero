@@ -58,7 +58,7 @@ public class SuperHeroService {
 
 		SuperHero superHeroUpdated = superHeroRepository.save(superHero);
 
-		if (Objects.isNull(superHero) ) return Optional.empty();
+		if (Objects.isNull(superHeroUpdated) ) return Optional.empty();
 
 		return Optional.of(superHeroUpdated);
 	}

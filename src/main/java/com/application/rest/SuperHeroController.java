@@ -72,7 +72,7 @@ public class SuperHeroController {
 
 		if (superHeroUpdated.isEmpty()  ) return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 
-		return ResponseEntity.status(HttpStatus.OK).body(superHero);
+		return ResponseEntity.status(HttpStatus.OK).body(superHeroUpdated);
 	}
 
 	@DeleteMapping(value = "/{id}")
