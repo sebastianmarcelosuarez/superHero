@@ -17,8 +17,6 @@ public class MyApplicationRunner implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 
-		//TODO this initialize is for testing, delete it with all this class
-		System.out.println("Application started!");
-		superHeroService.initialize();
+
 	}
 }
